@@ -41,6 +41,12 @@ public class CourseController {
 //        return courseService.getCourseBytWeekAndClazzId(week,clazzId);
 //    }
 
+    @GetMapping("/course/geToDay")
+    public Result<?> geToDay(){
+        Integer day = 11;
+        return courseService.getCourseBytWeekAndClazzId("22", "ss");
+    }
+
     @ApiOperation(value = "根据周次和班级Id获取全部课表", notes = "/course/6-6/软件1935")
     @GetMapping("/course/{times}/{clazzId}")
     public Result<?> getCourseByTimesAndClazzId(@PathVariable(name = "clazzId") String clazzId,
