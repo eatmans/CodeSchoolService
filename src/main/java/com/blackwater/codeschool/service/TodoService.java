@@ -3,8 +3,6 @@ package com.blackwater.codeschool.service;
 import com.blackwater.codeschool.entity.Result;
 import com.blackwater.codeschool.entity.Todo;
 
-import java.util.List;
-
 /**
  * @author eatmans
  * @version 1.0
@@ -12,11 +10,31 @@ import java.util.List;
  */
 public interface TodoService {
 
+    /**
+     *  获取全部TODO
+     * @return
+     */
     Result<?> getTodoAll();
 
-    Result<?> getTodoAllByUid();
+    /**
+     * 根据学号获取TODO
+     * @param uid
+     * @return
+     */
+    Result<?> getTodoAllByUid(Integer uid);
 
-    Result<?> addTodo();
+    /**
+     * 根据id删除TODO
+     * @param id 自增加id
+     * @return
+     */
+    Result<?> deleteTodoById(Integer id);
 
+    /**
+     *
+     * @param todo
+     * @return
+     */
+    Result<?> addTodo(Todo todo);
 
 }

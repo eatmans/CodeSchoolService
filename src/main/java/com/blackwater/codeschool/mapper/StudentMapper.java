@@ -1,5 +1,6 @@
 package com.blackwater.codeschool.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.blackwater.codeschool.entity.Student;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
@@ -14,8 +15,8 @@ import java.util.List;
  * @version 1.0
  * @date 2021/4/1
  */
-@Component
-public interface StudentMapper {
+
+public interface StudentMapper extends BaseMapper<Student> {
 
     // 获取全部学生信息
     @Select("select * from student_t")

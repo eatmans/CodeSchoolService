@@ -25,16 +25,20 @@ public class StudentController {
 
     @ApiOperation(value = "根据学号获取学生信息", notes = "无")
     @GetMapping("/uid/{uid}")
-    public Result<?> getStudentByUid(@PathVariable(name = "uid") Integer uid){
+    public Result<?> getStudentByUid(@PathVariable(name = "uid") Integer uid) {
         return studentService.getStudentByUid(uid);
     }
 
-
     @ApiOperation(value = "根据手机号码获取学生信息", notes = "无")
     @GetMapping("/phone/{phonenumber}")
-    public Result<?> getStudentByPhoneNumber(@PathVariable(name = "phonenumber") String phonenumber){
+    public Result<?> getStudentByPhoneNumber(@PathVariable(name = "phonenumber") String phonenumber) {
         return studentService.getStudentByPhoneNumber(phonenumber);
     }
 
+    @ApiOperation(value = "根据手机号码获取找回密码", notes = "无")
+    @GetMapping("/find/{phonenumber}")
+    public Result<?> findStudentByPhoneNumber(@PathVariable(name = "phonenumber") String phonenumber) {
+        return studentService.getStudentByPhoneNumber(phonenumber);
+    }
 
 }

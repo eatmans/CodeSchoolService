@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * @author eatmans
  * @version 1.0
@@ -22,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = {"注册相关接口"}, value = "注册模块")
 public class RegisterController {
 
-    @Autowired
+    @Resource
     private StudentService studentService;
 
     @PostMapping("/uid")

@@ -1,12 +1,14 @@
 package com.blackwater.codeschool.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.blackwater.codeschool.entity.Event;
+import com.blackwater.codeschool.entity.Result;
+import com.blackwater.codeschool.entity.ResultCode;
 import com.blackwater.codeschool.mapper.EventMapper;
 import com.blackwater.codeschool.service.EventService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.annotation.Resource;
 
 /**
  * @author eatmans
@@ -16,21 +18,32 @@ import java.util.List;
 @Service
 public class EventServiceImpl implements EventService {
 
-    @Autowired
-    EventMapper eventMapper;
+    @Resource
+    private EventMapper eventMapper;
 
     @Override
-    public List<Event> getEventAll() {
-        return eventMapper.getEventAll();
+    public Result<?> getEventAll() {
+        return Result.success(eventMapper.selectList(null));
     }
 
     @Override
-    public List<Event> getEventByUid() {
-        return null;
+    public Result<?> getEventByUid(Integer uid) {
+        if (uid == null) {
+            return Result.error(ResultCode.DATA_EXCEPTION);
+        }
+        QueryWrapper<Event> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid", uid);
+        return Result.success(eventMapper.selectList(queryWrapper));
     }
 
     @Override
-    public String addEvent() {
-        return null;
+    public Result<?> addEvent(Event event) {
+        return Result.success(eventMapper.insert(event));
     }
+
+    @Override
+    public Result<?> deleteEventByUid(Integer id) {
+        return Result.success(eventMapper.deleteById(id));
+    }
+
 }

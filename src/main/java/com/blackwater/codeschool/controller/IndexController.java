@@ -17,9 +17,9 @@ public class IndexController {
     @RequestMapping("/")
     public String index(){
         return "连接成功,请开始使用接口吧！ \n" +
-                "接口文档1： http://kede.rjxh.cloud:9999/document.html  \n" +
-                "接口文档2： http://kede.rjxh.cloud:9999/docs.html \n" +
-                "接口文档3： http://kede.rjxh.cloud:9999/swagger-ui.html \n";
+                "接口文档1： http://kede.rjxh.cloud:8879/document.html  \n" +
+                "接口文档2： http://kede.rjxh.cloud:8879/docs.html \n" +
+                "接口文档3： http://kede.rjxh.cloud:8879/swagger-ui.html \n";
     }
 
 }

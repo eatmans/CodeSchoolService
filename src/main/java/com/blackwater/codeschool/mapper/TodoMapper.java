@@ -1,12 +1,7 @@
 package com.blackwater.codeschool.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.blackwater.codeschool.entity.Todo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * @author eatmans
@@ -14,15 +9,6 @@ import java.util.List;
  * @date 2021/4/4
  */
 
-@Component
-public interface TodoMapper {
+public interface TodoMapper extends BaseMapper<Todo> {
 
-    @Select("select * from todo_t")
-    List<Todo> getTodoAll();
-
-    @Insert("insert into todo_t(uid, content) " +
-            "VALUES(#{uid}, #{content})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
-
-    void addTodoByUid(Todo todo);
 }

@@ -1,8 +1,8 @@
 package com.blackwater.codeschool.service;
 
 import com.blackwater.codeschool.entity.Event;
+import com.blackwater.codeschool.entity.Result;
 
-import java.util.List;
 
 /**
  * @author eatmans
@@ -11,9 +11,11 @@ import java.util.List;
  */
 public interface EventService {
 
-    List<Event> getEventAll();
+    Result<?> getEventAll();
 
-    List<Event> getEventByUid();
+    Result<?> getEventByUid(Integer uid);
 
-    String  addEvent();
+    Result<?> addEvent(Event event);
+
+    Result<?> deleteEventByUid(Integer id);
 }

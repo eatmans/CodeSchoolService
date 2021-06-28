@@ -3,14 +3,13 @@ package com.blackwater.codeschool.service;
 import com.blackwater.codeschool.entity.Result;
 import com.blackwater.codeschool.entity.Student;
 
-import java.util.List;
 
 /**
  * @author eatmans
  * @version 1.0
  * @date 2021/3/31
  */
-public interface  StudentService {
+public interface StudentService {
 
     Result<?> getStudentAll();
 

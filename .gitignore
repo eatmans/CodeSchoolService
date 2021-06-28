@@ -32,3 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 md-toc.exe
+
+#maven
+target
+reports

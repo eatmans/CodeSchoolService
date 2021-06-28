@@ -1,14 +1,15 @@
 package com.blackwater.codeschool.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.blackwater.codeschool.entity.Course;
 import com.blackwater.codeschool.entity.Result;
+import com.blackwater.codeschool.entity.ResultCode;
 import com.blackwater.codeschool.mapper.CourseMapper;
 import com.blackwater.codeschool.service.CourseService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.annotation.Resource;
 
 /**
  * @author eatmans
@@ -18,12 +19,8 @@ import java.util.List;
 @Service
 public class CourseServiceImpl implements CourseService {
 
+    @Resource
     private CourseMapper courseMapper;
-
-    @Autowired
-    public CourseServiceImpl(CourseMapper courseMapper){
-        this.courseMapper = courseMapper;
-    }
 
     @Override
     public Result<?> getCourseAll() {
@@ -31,14 +28,19 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Result<?>getCourseByUid() {
-        return null;
+    public Result<?> getCourseByUid(Integer uid) {
+        if (uid == null) {
+            return Result.error(ResultCode.DATA_EXCEPTION);
+        }
+        QueryWrapper<Course> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid", uid);
+        return Result.success(courseMapper.selectList(queryWrapper));
     }
 
     @Override
     @ApiOperation(value = "获取课表列表", notes = "根据班级获取")
     public Result<?> getCourseByClassId(String clazzId) {
-        return Result.success(courseMapper.getCourseByClassId(clazzId)) ;
+        return Result.success(courseMapper.getCourseByClassId(clazzId));
     }
 
     @Override
@@ -64,12 +66,12 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Result<?> getCourseBytWeekAndClazzId(String week, String clazzId) {
-        return Result.success(courseMapper.getCourseBytWeekAndClazzId(week,clazzId));
+        return Result.success(courseMapper.getCourseBytWeekAndClazzId(week, clazzId));
     }
 
     @Override
     public Result<?> getCourseBytTimesAndWeekAndClazzId(String times, String week, String clazzId) {
-        return Result.success(courseMapper.getCourseBytTimesAndWeekAndClazzId(times,week,clazzId));
+        return Result.success(courseMapper.getCourseBytTimesAndWeekAndClazzId(times, week, clazzId));
     }
 
 }

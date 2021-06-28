@@ -1,11 +1,9 @@
 package com.blackwater.codeschool.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.blackwater.codeschool.entity.Course;
-import com.blackwater.codeschool.entity.Result;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -14,10 +12,9 @@ import java.util.List;
  * @version 1.0
  * @date 2021/4/1
  */
-@Component
-public interface CourseMapper<T> {
+public interface CourseMapper extends BaseMapper<Course> {
 
-    //查找全部课程
+    // 查找全部课程
     @Select("select * from course_t")
     List<Course> getCourseAll();
 

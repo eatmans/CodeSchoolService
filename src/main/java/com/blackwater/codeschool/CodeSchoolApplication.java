@@ -1,6 +1,5 @@
 package com.blackwater.codeschool;
 
-
 import org.mybatis.spring.annotation.MapperScan;
 
 import org.springframework.boot.SpringApplication;

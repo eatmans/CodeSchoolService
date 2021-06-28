@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 /**
  * @author eatmans
  * @version 1.0
@@ -18,19 +20,18 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = {"课表相关接口"}, value = "课表模块")
 public class CourseController {
 
-    @Autowired
+    @Resource
     private CourseService courseService;
 
     @ApiOperation(value = "根据班级Id获取全部课表", notes = "/course/软件1935")
     @GetMapping("/course")
-    public Result<?> getCourseAll(@PathVariable(name = "clazzId") String clazzId){
+    public Result<?> getCourseAll(@PathVariable(name = "clazzId") String clazzId) {
         return courseService.getCourseAll();
     }
 
-
     @ApiOperation(value = "根据班级Id获取全部课表", notes = "/course/软件1935")
     @GetMapping("/course/{clazzId}")
-    public Result<?> getCourseByClassId(@PathVariable(name = "clazzId") String clazzId){
+    public Result<?> getCourseByClassId(@PathVariable(name = "clazzId") String clazzId) {
         return courseService.getCourseByClassId(clazzId);
     }
 
@@ -42,7 +43,7 @@ public class CourseController {
 //    }
 
     @GetMapping("/course/geToDay")
-    public Result<?> geToDay(){
+    public Result<?> geToDay() {
         Integer day = 11;
         return courseService.getCourseBytWeekAndClazzId("22", "ss");
     }
@@ -50,16 +51,16 @@ public class CourseController {
     @ApiOperation(value = "根据周次和班级Id获取全部课表", notes = "/course/6-6/软件1935")
     @GetMapping("/course/{times}/{clazzId}")
     public Result<?> getCourseByTimesAndClazzId(@PathVariable(name = "clazzId") String clazzId,
-                                                @PathVariable(name = "times") String times){
-        return courseService.getCourseByTimesAndClazzId(times,clazzId);
+                                                @PathVariable(name = "times") String times) {
+        return courseService.getCourseByTimesAndClazzId(times, clazzId);
     }
 
     @ApiOperation(value = "根据班第几周、星期几和级Id获取全部课表", notes = "/course/6-6/2/软件1935")
     @GetMapping("/course/{times}/{week}/{clazzId}")
     public Result<?> getCourseBytTimesAndWeekAndClazzId(
-            @PathVariable(name = "times") String times,@PathVariable(name = "clazzId") String clazzId,
-                                                   @PathVariable(name = "week") String week){
-        return courseService.getCourseBytTimesAndWeekAndClazzId(times,week,clazzId);
+            @PathVariable(name = "times") String times, @PathVariable(name = "clazzId") String clazzId,
+            @PathVariable(name = "week") String week) {
+        return courseService.getCourseBytTimesAndWeekAndClazzId(times, week, clazzId);
     }
 
 }
